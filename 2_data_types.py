@@ -37,4 +37,26 @@ print(165//2)
 #19
 print(6.2+6.3)
 #20
-print
+print(1+1)
+#21
+print(5.5-1)
+#22
+print(1- 1.1)
+#23
+print(1/1)
+#24
+print(1*8)
+#25
+print(8*8)
+#26
+print("Hamish "*10)
+#27
+print("Hamish\n"*10)
+#28
+print("5+10=" + str(5+10))
+#29
+print("15/2=" + str(15/2))
+#30
+print("30/2=" + str(30/2))
+#31
+print("30/2*5=" + str(30/2*5))
