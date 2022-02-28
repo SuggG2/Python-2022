@@ -11,5 +11,12 @@ print("You have", money,"dollars")
 print("Buying a hat")
 #4
 money -= hat
-#5
+#5 and 6
+print(f"You now have {money} left")
+#7
+print("Buying a top")
+money -= top
+print(f"You now have {money} left")
+print("Buying a pants")
+money -= pants
 print(f"You now have {money} left")
