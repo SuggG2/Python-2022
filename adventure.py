@@ -2,6 +2,8 @@
 from adventurelib import *
 
 #rooms
+Room.items = Bag()
+
 space = Room("You are drifting in space. You see a spaceship.")
 airlock = Room("You are in an airlock")
 cargo = Room("You are in the cargo bay")
@@ -22,6 +24,16 @@ bridge.south = escape
 mess.west = quarters
 quarters.north = airlock
 
+#items
+Item.description = "" #make sure each item has a description
+keycard = Item("A red keycard","keycard","card","key","red keycard")
+keycard.description = "You look at the keycard and see it is labelled escape pod"
+
+note = Item("A scribbled note","note","paper","code")
+note.description = "youu look at the note. The numbers 2,3,5,4 are scribbled on it"
+
+#add items to room
+quarters.item.add(note)
 
 #variables
 current_room = space
@@ -56,6 +68,14 @@ def travel(direction):
 	else:
 		print("You cant go that way")
 
+@when("look")
+def look():
+	print(current_room)
+	print("There are exits to the ",current_room.exits())
+	if len(current_room.items) > 0:
+		print("You also see:")
+		for item in current_room.items:
+			print(item)
 
 #EVERYTHING GOES ABOVE HERE - DO NOT CHANGE
 #ANYTHING BELOW THIS LINE
