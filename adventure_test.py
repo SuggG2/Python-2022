@@ -32,6 +32,8 @@ Item.description = ""
 torch = Item("torch")
 torch.description
 
+note = Item("A scribbled note","note","paper","code")
+note.description = "you look at the note. The number word  is scribbled on it"
 ###################
 #DEFINE BAGS
 ###################
