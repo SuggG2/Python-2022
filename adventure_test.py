@@ -7,9 +7,16 @@ from adventurelib import*
 #DEFINE ROOMS
 ###################
 
-spce = Room("""
-	You are drifinting in space. it feels very cold.
-	A slate-blue spaceship sits completely)
+office = Room("You are in a small office. There are hallways to your west and to you east.")
+dining_areaW = Room("You are in the west half of the ")
+dining_areaE = Room()
+pirate_cove = has one note in the south part of the room connected to the west dining area
+restrooms = has a note in the south part of the room connected to east dining area
+show_stage = split into 2 sides west side has a note east side has an npc
+Supply_closet = has a note in the south part of the room connected to the west hall 
+west_hall = hallway / room connecting the office, supply closet, and dining area
+east_hall = hallway / room connecting the office and dining area and has an npc at the end
+
 ###################
 #DEFINE CONNECTIONS
 ###################
