@@ -30,7 +30,7 @@ keycard = Item("A red keycard","keycard","card","key","red keycard")
 keycard.description = "You look at the keycard and see it is labelled escape pod"
 
 note = Item("A scribbled note","note","paper","code")
-note.description = "youu look at the note. The numbers 2,3,5,4 are scribbled on it"
+note.description = "you look at the note. The numbers 2,3,5,4 are scribbled on it"
 
 #add items to room
 quarters.item.add(note)
