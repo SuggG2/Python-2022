@@ -18,7 +18,7 @@ Supply_closet = Room("You are in the supply closet")
 west_hall = Room("You are in the west hall. The office is to the east and the supply closet is to the west. You see the dining area ahead to the north")
 east_hall = Room("You are in the west hall. The office is to the west. You see the dining area ahead to the north")
 back_stage = Room("You are on the show Stage. There are old beaten boxes, chairs, tables and food boxes piled up in the west and east corners of the room.")
-
+current_room = office
 
 ###################
 #DEFINE CONNECTIONS
@@ -42,7 +42,7 @@ torch = Item("torch")
 torch.description = "a pale grey torch that lights up rooms to help you find hidden items"
 
 note = Item("A scribbled note","note","paper","code")
-note.description = "you look at the note. The number word  is scribbled on it"
+note.description = "you look at the note. "
 ###################
 #DEFINE BAGS
 ###################
@@ -61,9 +61,26 @@ player_inv = Bag()
 ###################
 #BINDS
 ###################
-@when("brush teeth")
-def brush_teeth():
-	print("You brush your teeth")
+@when("enter west hall")
+@when("enter east hall")
+def enter_west_hall():
+	global current_room
+	if current_room is not office:
+		say("You cannot enter")
+		return
+	else:
+		current_room = office 
+@when ("go DIRECTION")
+def travel(direction):
+	global current_room
+	if direction in current_room.exits():
+		current_room = current_room.exit(direction)
+		print(f"You go {direction}.")
+		print(current_room)
+@when("look")
+def look():
+	print(current_room)
+	print(current_room.exits)
 
 ###################
 #MAIN FUNCTION
