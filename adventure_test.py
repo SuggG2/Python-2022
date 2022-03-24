@@ -41,8 +41,20 @@ Item.description = ""
 torch = Item("torch")
 torch.description = "a pale grey torch that lights up rooms to help you find hidden items"
 
-note = Item("A scribbled note","note","paper","code")
-note.description = "you look at the note. "
+blue_note = Item("A scribbled note","note","paper","code")
+note.description = "you look at the blue note. "
+
+red_note = Item("A scribbled note","note","paper","code")
+note.description = "you look at the red note. "
+
+yellow_note = Item("A scribbled note","note","paper","code")
+note.description = "you look at the yellow note. "
+
+green_note = Item("A scribbled note","note","paper","code")
+note.description = "you look at the green note. "
+
+maroon_note = Item("A scribbled note","note","paper","code")
+note.description = "you look at the maroon note. "
 ###################
 #DEFINE BAGS
 ###################
@@ -51,7 +63,12 @@ player_inv = Bag()
 ###################
 #ADD ITEMS TO BAGS
 ###################
-
+back_stage.items.add(blue_note)
+show_stageE.items.add(red_note)
+dining_areaW.items.add(yellow_note)
+restrooms.items.add(green_note)
+Supply_closet.items.add(maroon_note)
+dining_areaE.items.add(torch)
 
 ###################
 #DEFINE ANY VARIABLES
@@ -80,8 +97,15 @@ def travel(direction):
 @when("look")
 def look():
 	print(current_room)
-	print(current_room.exits)
-
+	print(current_room.exits())
+	if len(current_room.items) > 0 :
+		print("You see:")
+		for item in current_room.items:
+			print(item)
+@when ("get ITEM")
+@when("take ITEM")
+@when("pick up ITEM")
+def pickup(item):
 ###################
 #MAIN FUNCTION
 ###################
