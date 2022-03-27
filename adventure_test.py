@@ -28,7 +28,7 @@ office.east = east_hall
 west_hall.west = Supply_closet
 west_hall.north = dining_areaW
 east_hall.north = dining_areaE
-dining_areaE.north = show_stage
+dining_areaE.north = show_stageE
 dining_areaW.north = show_stageW
 dining_areaW.west = back_stage
 dining_areaE.east = restrooms
@@ -42,19 +42,19 @@ torch = Item("torch")
 torch.description = "a pale grey torch that lights up rooms to help you find hidden items"
 
 blue_note = Item("A scribbled note","note","paper","code")
-note.description = "you look at the blue note. "
+blue_note.description = "you look at the blue note. "
 
 red_note = Item("A scribbled note","note","paper","code")
-note.description = "you look at the red note. "
+red_note.description = "you look at the red note. "
 
 yellow_note = Item("A scribbled note","note","paper","code")
-note.description = "you look at the yellow note. "
+yellow_note.description = "you look at the yellow note. "
 
 green_note = Item("A scribbled note","note","paper","code")
-note.description = "you look at the green note. "
+green_note.description = "you look at the green note. "
 
 maroon_note = Item("A scribbled note","note","paper","code")
-note.description = "you look at the maroon note. "
+maroon_note.description = "you look at the maroon note. "
 ###################
 #DEFINE BAGS
 ###################
@@ -106,11 +106,31 @@ def look():
 @when("take ITEM")
 @when("pick up ITEM")
 def pickup(item):
+	if item in current_room.items:
+		t = current_room.items.take(item)
+		player_inv.add(t)
+		print(f"you pick up the {item}")
+	else:
+		print(f"You dont see a {item}")
+@when("inventory")
+@when("show inventory")
+@when("what is in my pocket")
+def inventory():
+	print("You are carrying")
+	for item in player_inv:
+		print(item)
+@when("look at ITEM")
+def look_at(item):
+	if item in player_inv:
+		t = inventory.find(item)
+		print(t.description)
+	else:
+		print(f"you arent carrying a {item}")
 ###################
 #MAIN FUNCTION
 ###################
+
 def main():
 	start()
 
-if __name__ == '__main__':
-	main()
+main()
