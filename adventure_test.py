@@ -32,6 +32,8 @@ dining_areaE.north = show_stageE
 dining_areaW.north = show_stageW
 dining_areaW.west = back_stage
 dining_areaE.east = restrooms
+dining_areaE.west = dining_areaW
+
 
 ###################
 #DEFINE ITEMS
@@ -126,6 +128,8 @@ def look_at(item):
 		print(t.description)
 	else:
 		print(f"you arent carrying a {item}")
+@when("use ITEM")
+
 ###################
 #MAIN FUNCTION
 ###################
