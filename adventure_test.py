@@ -18,6 +18,7 @@ Supply_closet = Room("You are in the supply closet")
 west_hall = Room("You are in the west hall. The office is to the east and the supply closet is to the west. You see the dining area ahead to the north")
 east_hall = Room("You are in the west hall. The office is to the west. You see the dining area ahead to the north")
 back_stage = Room("You are on the show Stage. There are old beaten boxes, chairs, tables and food boxes piled up in the west and east corners of the room.")
+exit = 
 current_room = office
 
 ###################
@@ -33,7 +34,7 @@ dining_areaW.north = show_stageW
 dining_areaW.west = back_stage
 dining_areaE.east = restrooms
 dining_areaE.west = dining_areaW
-
+office.south = exit
 
 ###################
 #DEFINE ITEMS
@@ -44,19 +45,19 @@ torch = Item("torch")
 torch.description = "a pale grey torch that lights up rooms to help you find hidden items"
 
 blue_note = Item("A scribbled note","note","paper","code")
-blue_note.description = "you look at the blue note. "
+blue_note.description = "you look at the blue note. It reads: "
 
 red_note = Item("A scribbled note","note","paper","code")
-red_note.description = "you look at the red note. "
+red_note.description = "you look at the red note. It reads: "
 
 yellow_note = Item("A scribbled note","note","paper","code")
-yellow_note.description = "you look at the yellow note. "
+yellow_note.description = "you look at the yellow note. It reads: "
 
 green_note = Item("A scribbled note","note","paper","code")
-green_note.description = "you look at the green note. "
+green_note.description = "you look at the green note. It reads: "
 
 maroon_note = Item("A scribbled note","note","paper","code")
-maroon_note.description = "you look at the maroon note. "
+maroon_note.description = "you look at the maroon note. It reads: "
 ###################
 #DEFINE BAGS
 ###################
