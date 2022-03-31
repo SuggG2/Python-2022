@@ -18,7 +18,7 @@ Supply_closet = Room("You are in the supply closet")
 west_hall = Room("You are in the west hall. The office is to the east and the supply closet is to the west. You see the dining area ahead to the north")
 east_hall = Room("You are in the west hall. The office is to the west. You see the dining area ahead to the north")
 back_stage = Room("You are on the show Stage. There are old beaten boxes, chairs, tables and food boxes piled up in the west and east corners of the room.")
-exit = 
+exit = Room("The exit. When you have gathered all the notes you may leave.")
 current_room = office
 
 ###################
@@ -35,6 +35,7 @@ dining_areaW.west = back_stage
 dining_areaE.east = restrooms
 dining_areaE.west = dining_areaW
 office.south = exit
+show_stageE.west = show_stageW
 
 ###################
 #DEFINE ITEMS
@@ -130,12 +131,16 @@ def look_at(item):
 	else:
 		print(f"you arent carrying a {item}")
 @when("use ITEM")
+def use(item):
+	if item in player_inv and current_room == "show_stageW" and item == "torch":
+		print("")
 
 ###################
 #MAIN FUNCTION
 ###################
 
 def main():
+	print(current_room)
 	start()
 
 main()
