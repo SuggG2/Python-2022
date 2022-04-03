@@ -42,22 +42,22 @@ show_stageE.west = show_stageW
 ###################
 Item.description = ""
 
-torch = Item("torch")
+torch = Item("torch", "flashlight")
 torch.description = "a pale grey torch that lights up rooms to help you find hidden items"
 
-blue_note = Item("A scribbled note","note","paper","code")
+blue_note = Item("A blue note", "blue note")
 blue_note.description = "you look at the blue note. It reads: "
 
-red_note = Item("A scribbled note","note","paper","code")
+red_note = Item("A red note", "red note")
 red_note.description = "you look at the red note. It reads: "
 
-yellow_note = Item("A scribbled note","note","paper","code")
+yellow_note = Item("A yellow note", "yellow note")
 yellow_note.description = "you look at the yellow note. It reads: "
 
-green_note = Item("A scribbled note","note","paper","code")
+green_note = Item("A green note", "green note")
 green_note.description = "you look at the green note. It reads: "
 
-maroon_note = Item("A scribbled note","note","paper","code")
+maroon_note = Item("A maroon note", "maroon note")
 maroon_note.description = "you look at the maroon note. It reads: "
 ###################
 #DEFINE BAGS
@@ -126,7 +126,7 @@ def inventory():
 @when("look at ITEM")
 def look_at(item):
 	if item in player_inv:
-		t = inventory.find(item)
+		t - inventory.find(item)
 		print(t.description)
 	else:
 		print(f"you arent carrying a {item}")
