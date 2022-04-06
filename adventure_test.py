@@ -34,7 +34,6 @@ dining_areaW.north = show_stageW
 dining_areaW.west = back_stage
 dining_areaE.east = restrooms
 dining_areaE.west = dining_areaW
-office.south = exit
 show_stageE.west = show_stageW
 
 ###################
@@ -75,9 +74,13 @@ Supply_closet.items.add(maroon_note)
 dining_areaE.items.add(torch)
 
 ###################
-#DEFINE ANY VARIABLES
+#OBJECTIVES
 ###################
- 
+maroon_note_got = False
+yellow_note_got = False
+green_note_got = False
+red_note_got = False
+blue_note_got = False
 
 ###################
 #BINDS
@@ -109,11 +112,26 @@ def look():
 @when ("get ITEM")
 @when("take ITEM")
 @when("pick up ITEM")
-def pickup(item):
+def pickup(item): 
+	global maroon_note_got
+	global yellow_note_got 
+	global green_note_got
+	global red_note_got 
+	global blue_note_got
 	if item in current_room.items:
 		t = current_room.items.take(item)
 		player_inv.add(t)
 		print(f"you pick up the {item}")
+	elif item in player_inv and current_room == Supply_closet and t == maroon_note:
+		maroon_note_got = True 
+	elif item in player_inv and current_room == show_stageE and t == red_note:
+		red_note_got = True 
+	elif item in player_inv and current_room == dining_areaW and t == yellow_note:
+		yellow_note_got = True 
+	elif item in player_inv and current_room == back_stage and t == blue_note:
+		blue_note_got = True 
+	elif item in player_inv and current_room == restrooms and t == green_note:
+		green_note_got = True 
 	else:
 		print(f"You dont see a {item}")
 @when("inventory")
