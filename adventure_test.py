@@ -17,7 +17,7 @@ show_stageW = Room("You are on the show West Stage. The east dining hall is to t
 Supply_closet = Room("You are in the supply closet")
 west_hall = Room("You are in the west hall. The office is to the east and the supply closet is to the west. You see the dining area ahead to the north")
 east_hall = Room("You are in the west hall. The office is to the west. You see the dining area ahead to the north")
-back_stage = Room("You are on the show Stage. There are old beaten boxes, chairs, tables and food boxes piled up in the west and east corners of the room.")
+back_stage = Room("You are in the back Stage. There are old beaten boxes, chairs, tables and food boxes piled up in the west and east corners of the room.")
 exit = Room("The exit. When you have gathered all the notes you may leave.")
 current_room = office
 
@@ -40,9 +40,6 @@ show_stageE.west = show_stageW
 #DEFINE ITEMS
 ###################
 Item.description = ""
-
-torch = Item("torch", "flashlight")
-torch.description = "a pale grey torch that lights up rooms to help you find hidden items"
 
 blue_note = Item("A blue note", "blue note")
 blue_note.description = "you look at the blue note. It reads: "
@@ -71,7 +68,6 @@ show_stageE.items.add(red_note)
 dining_areaW.items.add(yellow_note)
 restrooms.items.add(green_note)
 Supply_closet.items.add(maroon_note)
-dining_areaE.items.add(torch)
 
 ###################
 #OBJECTIVES
@@ -134,6 +130,12 @@ def pickup(item):
 		green_note_got = True 
 	else:
 		print(f"You dont see a {item}")
+
+if maroon_note_got and red_note_got and yellow_note_got and blue_note_got and green_note_got:
+	print("You have collected all the notes")
+	print("Congrats you win")
+	quit()
+
 @when("inventory")
 @when("show inventory")
 @when("what is in my pocket")
