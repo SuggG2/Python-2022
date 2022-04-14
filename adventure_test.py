@@ -118,7 +118,10 @@ def pickup(item):
 		t = current_room.items.take(item)
 		player_inv.add(t)
 		print(f"you pick up the {item}")
-	elif item in player_inv and current_room == Supply_closet and t == maroon_note:
+	else:
+		print(f"You dont see a {item}")
+		
+	if item in player_inv and current_room == Supply_closet and t == maroon_note:
 		maroon_note_got = True 
 	elif item in player_inv and current_room == show_stageE and t == red_note:
 		red_note_got = True 
@@ -128,13 +131,12 @@ def pickup(item):
 		blue_note_got = True 
 	elif item in player_inv and current_room == restrooms and t == green_note:
 		green_note_got = True 
-	else:
-		print(f"You dont see a {item}")
-
-if maroon_note_got and red_note_got and yellow_note_got and blue_note_got and green_note_got:
-	print("You have collected all the notes")
-	print("Congrats you win")
-	quit()
+	
+	print(maroon_note_got,red_note_got,yellow_note_got,blue_note_got,green_note_got)
+	if maroon_note_got and red_note_got and yellow_note_got and blue_note_got and green_note_got:
+		print("You have collected all the notes")
+		print("Congrats you win")
+		quit()
 
 @when("inventory")
 @when("show inventory")
